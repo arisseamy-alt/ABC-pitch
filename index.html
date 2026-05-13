@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arisse Brand Company</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;700;800;900&family=Outfit:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FEFCEE;
+    --cream-dark: #FAF7DC;
+    --cream-border: #E8E3B8;
+    --black: #111110;
+    --red: #B8251E;
+    --red-dark: #8C1A14;
+    --red-light: rgba(184,37,30,0.08);
+    --text-body: #3A3835;
+    --text-muted: #7A7672;
+    --font-display: 'Barlow Condensed', sans-serif;
+    --font-body: 'Outfit', sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--cream);
+    color: var(--black);
+    font-family: var(--font-body);
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 0 52px;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(254,252,238,0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--cream-border);
+  }
+
+  .nav-left { display: flex; align-items: center; gap: 14px; }
+
+  .nav-abc {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    color: var(--red);
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  .nav-sep { width: 1px; height: 14px; background: var(--cream-border); }
+
+  .nav-name {
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 300;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .nav-location {
+    font-family: var(--font-body);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 300;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--cream);
+    padding-top: 60px;
+    overflow: hidden;
+  }
+
+  .hero-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 48px 52px 40px;
+    position: relative;
+  }
+
+  .hero-eyebrow { display: none; }
+
+  .hero-abc {
+    font-family: var(--font-display);
+    font-size: clamp(120px, 20vw, 260px);
+    font-weight: 900;
+    line-height: 0.88;
+    letter-spacing: -0.01em;
+    color: var(--red);
+    text-transform: uppercase;
+    display: block;
+  }
+
+  .hero-tagline {
+    margin-top: 24px;
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .hero-tag {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 5vw, 68px);
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--black);
+    letter-spacing: 0.01em;
+    line-height: 1.1;
+  }
+
+  .hero-tag-red { color: var(--red); }
+
+  .hero-bottom {
+    border-top: 1px solid var(--cream-border);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .hero-cell {
+    padding: 28px 36px;
+    border-right: 1px solid var(--cream-border);
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--text-body);
+    line-height: 1.65;
+  }
+
+  .hero-cell:last-child { border-right: none; }
+
+  .hero-cell-label {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  /* SHARED */
+  .section { padding: 96px 52px; }
+  .container { max-width: 1120px; margin: 0 auto; }
+
+  .label {
+    font-family: var(--font-display);
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--red);
+    font-weight: 700;
+    margin-bottom: 48px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .label::after {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--cream-border);
+  }
+
+  .label-light { color: rgba(254,252,238,0.6); }
+  .label-light::after { background: rgba(254,252,238,0.2); }
+
+  /* PROBLEM */
+  .problem { background: var(--cream); }
+
+  .problem-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--cream-border);
+    margin-bottom: 0;
+  }
+
+  .problem-left-cell {
+    padding: 56px 48px;
+    border-right: 1px solid var(--cream-border);
+  }
+
+  .problem-headline {
+    font-family: var(--font-display);
+    font-size: clamp(44px, 5.5vw, 72px);
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    color: var(--red);
+  }
+
+  .problem-headline .blk { color: var(--black); }
+
+  .problem-right-cell {
+    padding: 56px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .problem-body {
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.85;
+    color: var(--text-body);
+  }
+
+  .problem-body p { margin-bottom: 20px; }
+  .problem-body p:last-child { margin-bottom: 0; }
+  .problem-body strong { font-weight: 500; color: var(--black); }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border: 1px solid var(--cream-border);
+    border-top: none;
+  }
+
+  .stat {
+    padding: 40px 36px;
+    border-right: 1px solid var(--cream-border);
+    background: var(--cream-dark);
+  }
+
+  .stat:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 72px;
+    font-weight: 900;
+    color: var(--red);
+    line-height: 0.9;
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+  }
+
+  .stat-text {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .stat-quote {
+    font-family: var(--font-display);
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--red);
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+  }
+
+  /* SERVICES */
+  .services { background: var(--red); padding: 96px 52px; }
+
+  .services-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    margin-bottom: 52px;
+    align-items: end;
+  }
+
+  .services-headline {
+    font-family: var(--font-display);
+    font-size: clamp(48px, 6vw, 80px);
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    color: var(--cream);
+  }
+
+  .services-desc {
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(254,252,238,0.65);
+    line-height: 1.8;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(254,252,238,0.15);
+  }
+
+  .service {
+    background: rgba(254,252,238,0.08);
+    padding: 40px 36px;
+    border-top: 2px solid transparent;
+    transition: background 0.2s ease;
+    cursor: default;
+  }
+
+  .service:hover { background: rgba(254,252,238,0.14); }
+
+  .service-n {
+    font-family: var(--font-display);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: rgba(254,252,238,0.45);
+    margin-bottom: 18px;
+    font-weight: 700;
+  }
+
+  .service-name {
+    font-family: var(--font-display);
+    font-size: 26px;
+    font-weight: 900;
+    color: var(--cream);
+    margin-bottom: 12px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    line-height: 1.0;
+  }
+
+  .service-text {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(254,252,238,0.6);
+    line-height: 1.7;
+  }
+
+  /* DIFFERENCE */
+  .difference { background: var(--cream); padding: 96px 52px; }
+
+  .diff-statement {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 16px;
+    max-width: 700px;
+  }
+
+  .diff-substatement {
+    font-family: var(--font-display);
+    font-size: clamp(18px, 2.5vw, 28px);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
+    margin-bottom: 52px;
+    max-width: 500px;
+  }
+
+  .diff-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--cream-border);
+    border: 1px solid var(--cream-border);
+  }
+
+  .diff-col { padding: 40px 40px; background: var(--cream); }
+
+  .diff-col-label {
+    font-family: var(--font-display);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    font-weight: 700;
+  }
+
+  .diff-col.not .diff-col-label { color: var(--text-muted); }
+  .diff-col.yes .diff-col-label { color: var(--red); }
+
+  .diff-item {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--cream-dark);
+    line-height: 1.2;
+  }
+
+  .diff-item:last-child { border-bottom: none; }
+  .diff-col.not .diff-item { color: var(--text-muted); text-decoration: line-through; text-decoration-color: var(--cream-border); }
+  .diff-col.yes .diff-item { color: var(--black); }
+
+  /* PERSONAL */
+  .personal { background: var(--cream-dark); padding: 96px 52px; }
+
+  .personal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--cream-border);
+  }
+
+  .personal-left {
+    padding: 56px 48px;
+    border-right: 1px solid var(--cream-border);
+    background: var(--red);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .personal-name-block { margin-bottom: 40px; }
+
+  .personal-first {
+    font-family: var(--font-display);
+    font-size: clamp(64px, 8vw, 108px);
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--cream);
+    line-height: 0.88;
+    display: block;
+    letter-spacing: -0.01em;
+  }
+
+  .personal-last {
+    font-family: var(--font-display);
+    font-size: clamp(64px, 8vw, 108px);
+    font-weight: 900;
+    color: rgba(254,252,238,0.45);
+    line-height: 0.88;
+    display: block;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+  }
+
+  .personal-role {
+    font-family: var(--font-body);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(254,252,238,0.45);
+    margin-bottom: 28px;
+    font-weight: 300;
+  }
+
+  .brand-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .brand-tag {
+    font-family: var(--font-display);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border: 1px solid rgba(254,252,238,0.2);
+    color: rgba(254,252,238,0.55);
+    font-weight: 700;
+    transition: all 0.2s;
+    cursor: default;
+  }
+
+  .brand-tag:hover { border-color: var(--cream); color: var(--cream); }
+
+  .personal-right {
+    padding: 56px 48px;
+    background: var(--cream);
+  }
+
+  .personal-quote {
+    font-family: var(--font-display);
+    font-size: clamp(22px, 2.8vw, 34px);
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--red);
+    margin-bottom: 32px;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    border-left: 4px solid var(--red);
+    padding-left: 24px;
+  }
+
+  .personal-body {
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.85;
+    color: var(--text-body);
+  }
+
+  .personal-body p { margin-bottom: 16px; }
+  .personal-body p:last-child { margin-bottom: 0; }
+
+  /* PHASES */
+  .phases { background: var(--cream); padding: 96px 52px; }
+
+  .phases-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: end;
+    margin-bottom: 48px;
+  }
+
+  .phases-headline {
+    font-family: var(--font-display);
+    font-size: clamp(44px, 5.5vw, 72px);
+    font-weight: 900;
+    line-height: 0.95;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    color: var(--red);
+  }
+
+  .phases-sub {
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--text-muted);
+    line-height: 1.75;
+  }
+
+  .phases-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border: 1px solid var(--cream-border);
+  }
+
+  .phase {
+    padding: 40px 36px;
+    border-right: 1px solid var(--cream-border);
+    background: var(--cream);
+  }
+
+  .phase:last-child { border-right: none; }
+
+  .phase-active {
+    background: var(--red);
+    border-color: var(--red);
+  }
+
+  .phase-n {
+    font-family: var(--font-display);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .phase-active .phase-n { color: rgba(254,252,238,0.6); }
+  .phase:not(.phase-active) .phase-n { color: var(--red); }
+
+  .phase-period {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 300;
+    margin-bottom: 20px;
+  }
+
+  .phase-active .phase-period { color: rgba(254,252,238,0.5); }
+  .phase:not(.phase-active) .phase-period { color: var(--text-muted); }
+
+  .phase-title {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    margin-bottom: 12px;
+    line-height: 1.0;
+  }
+
+  .phase-active .phase-title { color: var(--cream); }
+  .phase:not(.phase-active) .phase-title { color: var(--red); }
+
+  .phase-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--cream);
+    margin-bottom: 20px;
+  }
+
+  .phase-desc {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.75;
+  }
+
+  .phase-active .phase-desc { color: rgba(254,252,238,0.65); }
+  .phase:not(.phase-active) .phase-desc { color: var(--text-muted); }
+
+  /* CLOSE */
+  .close {
+    background: var(--red);
+    padding: 120px 52px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .close-abc {
+    position: absolute;
+    bottom: -24px;
+    right: 40px;
+    font-family: var(--font-display);
+    font-size: clamp(120px, 20vw, 260px);
+    font-weight: 900;
+    letter-spacing: -0.01em;
+    color: var(--cream);
+    text-transform: uppercase;
+    z-index: 2;
+    line-height: 1;
+  }
+
+  .close-bg { display: none; }
+
+  .close-line1 {
+    font-family: var(--font-display);
+    font-size: clamp(48px, 8vw, 104px);
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 0.9;
+    letter-spacing: -0.01em;
+    color: var(--cream);
+    display: block;
+    position: relative;
+    z-index: 2;
+  }
+
+  .close-line2 {
+    font-family: var(--font-display);
+    font-size: clamp(48px, 8vw, 104px);
+    font-weight: 300;
+    text-transform: uppercase;
+    line-height: 0.9;
+    letter-spacing: -0.01em;
+    color: rgba(254,252,238,0.55);
+    display: block;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 40px;
+  }
+
+  .close-location {
+    font-family: var(--font-body);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(254,252,238,0.45);
+    margin-bottom: 40px;
+    font-weight: 300;
+    position: relative;
+    z-index: 2;
+  }
+
+  .close-email {
+    font-family: var(--font-display);
+    font-size: clamp(16px, 2vw, 24px);
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    color: var(--cream);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(254,252,238,0.35);
+    padding-bottom: 4px;
+    transition: all 0.2s;
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+    text-transform: lowercase;
+  }
+
+  .close-email:hover { border-color: var(--cream); }
+
+  .close-prompt {
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 300;
+    color: rgba(254,252,238,0.75);
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .personal-brands-label {
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(254,252,238,0.4);
+    margin-bottom: 10px;
+    margin-top: 24px;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 18px 52px;
+    border-top: 1px solid var(--cream-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--cream);
+  }
+
+  .footer-left { display: flex; align-items: center; gap: 10px; }
+
+  .footer-abc {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    color: var(--red);
+  }
+
+  .footer-name {
+    font-family: var(--font-body);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 300;
+  }
+
+  .footer-right {
+    font-family: var(--font-body);
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 300;
+  }
+
+  /* FADE */
+  .fade {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade.in { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 24px; }
+    .section, .services, .difference, .personal, .phases { padding: 72px 24px; }
+    .hero-main { padding: 60px 24px 36px; }
+    .hero-bottom { grid-template-columns: 1fr; }
+    .hero-cell { border-right: none; border-bottom: 1px solid var(--cream-border); }
+    .problem-grid, .services-header, .personal-grid, .phases-header { grid-template-columns: 1fr; }
+    .problem-left-cell { border-right: none; border-bottom: 1px solid var(--cream-border); }
+    .personal-left { border-right: none; border-bottom: 1px solid rgba(254,252,238,0.15); }
+    .stats, .services-grid, .diff-grid { grid-template-columns: 1fr; }
+    .stat { border-right: none; border-bottom: 1px solid var(--cream-border); }
+    .phases-grid { grid-template-columns: 1fr; }
+    .phase { border-right: 1px solid var(--cream-border); border-bottom: none; }
+    .phase:last-child { border-bottom: 1px solid var(--cream-border); }
+    footer { flex-direction: column; gap: 8px; text-align: center; }
+    .close { padding: 80px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-left">
+    <a href="#" class="nav-abc">ABC</a>
+    <div class="nav-sep"></div>
+    <span class="nav-name">Arisse Brand Company</span>
+  </div>
+  <span class="nav-location">Amsterdam 2026</span>
+</nav>
+
+<section class="hero">
+  <div class="hero-main">
+    <p class="hero-eyebrow fade">Arisse Brand Company</p>
+    <span class="hero-abc fade">ABC</span>
+    <div class="hero-tagline fade">
+      <span class="hero-tag">Building brands that are</span>
+      <span class="hero-tag hero-tag-red">felt</span>
+    </div>
+  </div>
+  <div class="hero-bottom">
+    <div class="hero-cell fade">
+      <span class="hero-cell-label">What we do</span>
+      Strategy and physical experience that drive real business impact.
+    </div>
+    <div class="hero-cell fade">
+      <span class="hero-cell-label">For whom</span>
+      Ambitious brands that want to go beyond getting noticed.
+    </div>
+    <div class="hero-cell fade">
+      <span class="hero-cell-label">Based in</span>
+      Amsterdam. Working wherever the brand needs to be felt.
+    </div>
+  </div>
+</section>
+
+<section class="section problem">
+  <div class="container">
+    <p class="label fade">The world we work in</p>
+    <div class="problem-grid fade">
+      <div class="problem-left-cell">
+        <p class="problem-headline">
+          <span class="blk">Most brands have a story,<br>but</span> only<br>
+          few are remembered
+        </p>
+      </div>
+      <div class="problem-right-cell">
+        <div class="problem-body">
+          <p>In a world that is becoming more digital by the day, the brands that last are the ones that connect with real life — with intention, with strategy, and with experiences that are part of something bigger than a single moment.</p>
+          <p><strong>Offline is no longer optional.</strong> It is where trust is built, where loyalty is earned, and where brands become something people actually feel.</p>
+        </div>
+      </div>
+    </div>
+    <div class="stats fade">
+      <div class="stat">
+        <p class="stat-num">85%</p>
+        <p class="stat-text">of Gen Z and Millennials meet people with shared interests offline</p>
+      </div>
+      <div class="stat">
+        <p class="stat-num">44.7%</p>
+        <p class="stat-text">prefer shopping in-store over online — even stronger for Gen Z</p>
+      </div>
+      <div class="stat">
+        <p class="stat-quote">Offline is the new luxury</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services">
+  <div class="container">
+    <p class="label label-light fade">What ABC does</p>
+    <div class="services-header">
+      <h2 class="services-headline fade">
+        Strategy first,<br>moments as output
+      </h2>
+      <p class="services-desc fade">ABC works across the full brand journey — from defining who you are to making sure people feel it. Six areas of work, one connecting thread: brands built to last.</p>
+    </div>
+    <div class="services-grid fade">
+      <div class="service">
+        <p class="service-n">01</p>
+        <h3 class="service-name">Brand Positioning</h3>
+        <p class="service-text">Launch, relaunch or reposition — grounded in who you actually are and where you want to go.</p>
+      </div>
+      <div class="service">
+        <p class="service-n">02</p>
+        <h3 class="service-name">Brand Strategy</h3>
+        <p class="service-text">Vision translated into a clear plan across paid, earned, shared and owned channels.</p>
+      </div>
+      <div class="service">
+        <p class="service-n">03</p>
+        <h3 class="service-name">Brand Experiences</h3>
+        <p class="service-text">Physical moments — activations, pop-ups, sampling — conceived and executed end to end.</p>
+      </div>
+      <div class="service">
+        <p class="service-n">04</p>
+        <h3 class="service-name">Brand Partnerships</h3>
+        <p class="service-text">Collaborations that make sense for the brand, curated and delivered with intention.</p>
+      </div>
+      <div class="service">
+        <p class="service-n">05</p>
+        <h3 class="service-name">Brand Productions</h3>
+        <p class="service-text">Creative and event production under one roof, with strategic direction throughout.</p>
+      </div>
+      <div class="service">
+        <p class="service-n">06</p>
+        <h3 class="service-name">Brand Hospitality</h3>
+        <p class="service-text">Food and hospitality as a brand tool — not an afterthought. The detail that makes it memorable.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="difference">
+  <div class="container">
+    <p class="label fade">What makes ABC different</p>
+    <h2 class="diff-statement fade">Our way of working</h2>
+    <p class="diff-substatement fade">Built around strategy, not execution alone</p>
+    <div class="diff-grid fade">
+      <div class="diff-col not">
+        <p class="diff-col-label">Not this</p>
+        <p class="diff-item">Event bureau without strategy</p>
+        <p class="diff-item">Consultancy that never executes</p>
+        <p class="diff-item">Generic activations</p>
+        <p class="diff-item">Catering with a nice logo</p>
+        <p class="diff-item">Big agency overhead</p>
+      </div>
+      <div class="diff-col yes">
+        <p class="diff-col-label">This</p>
+        <p class="diff-item">Strategy first, always</p>
+        <p class="diff-item">Concept and production under one roof</p>
+        <p class="diff-item">High standard, personal involvement</p>
+        <p class="diff-item">Hospitality as a brand tool</p>
+        <p class="diff-item">Business impact, full stop</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="personal">
+  <div class="container">
+    <p class="label fade">The person behind it</p>
+    <div class="personal-grid fade">
+      <div class="personal-left">
+        <div class="personal-name-block">
+          <span class="personal-first">Amy</span>
+          <span class="personal-last">Arisse</span>
+        </div>
+        <div>
+          <p class="personal-role">Founder, Arisse Brand Company</p>
+          <p class="personal-brands-label">Brands I have built and activated</p>
+          <div class="brand-tags">
+            <span class="brand-tag">Red Bull</span>
+            <span class="brand-tag">Crisp</span>
+            <span class="brand-tag">HEMA</span>
+            <span class="brand-tag">Dr. Martens</span>
+            <span class="brand-tag">Zalando</span>
+            <span class="brand-tag">Bijenkorf</span>
+            <span class="brand-tag">Uniqlo</span>
+          </div>
+        </div>
+      </div>
+      <div class="personal-right">
+        <p class="personal-quote">People forget what you tell them or show them, but they remember how you made them feel</p>
+        <div class="personal-body">
+          <p>Before ABC, I spent years doing exactly this for brands like Red Bull and Crisp, building strategy, creating moments and measuring what it delivered. Now I am building the studio around it.</p>
+          <p>A strong brand is not built on visibility alone. It is built on identity, on strategy, and on the moments you create around it. Online has enriched our world and the possibilities are endless, but it could never replace a real in-person connection.</p>
+          <p>I have spent my career building and activating brands like Red Bull, Crisp and HEMA, reaching new consumers and turning them into loyal ones. Physical experiences are the stage where that happens, where you create emotion, surprise people and build a connection that travels into group chats, into memory, into loyalty. That is what ABC is built to deliver.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="phases">
+  <div class="container">
+    <p class="label fade">Where we are going</p>
+    <div class="phases-header">
+      <h2 class="phases-headline fade">Building with intention,<br>one phase at a time</h2>
+      <p class="phases-sub fade">ABC is being built deliberately, starting with the work that proves the concept, growing into the company it is meant to become.</p>
+    </div>
+    <div class="phases-grid fade">
+      <div class="phase phase-active">
+        <div class="phase-dot"></div>
+        <p class="phase-n">Phase 01</p>
+        <p class="phase-period">Now — end of 2026</p>
+        <h3 class="phase-title">Laying the groundwork</h3>
+        <p class="phase-desc">Freelance work across project management, event management, creative production and brand activation. Building proof of concept and the first client relationships.</p>
+      </div>
+      <div class="phase">
+        <p class="phase-n">Phase 02</p>
+        <p class="phase-period">2027</p>
+        <h3 class="phase-title">First lighthouse projects</h3>
+        <p class="phase-desc">Brand activation strategy, bigger branding projects and integrated campaigns. Establishing ABC as a recognised name with a clear point of view.</p>
+      </div>
+      <div class="phase">
+        <p class="phase-n">Phase 03</p>
+        <p class="phase-period">2028 and beyond</p>
+        <h3 class="phase-title">ABC at full strength</h3>
+        <p class="phase-desc">Fully operational as intended. A small trusted team, a fixed partner network, and a growing portfolio of brands built to be felt.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="close">
+  <span class="close-abc">ABC</span>
+  <span class="close-line1 fade">Let's build a brand</span>
+  <span class="close-line2 fade">worth remembering</span>
+  <p class="close-prompt fade">Got a brand or project in mind that needs ABC? Reach out.</p>
+  <p class="close-location fade">Arisse Brand Company, Amsterdam</p>
+  <a href="mailto:amy@arissebrandcompany.com" class="close-email fade">amy@arissebrandcompany.com</a>
+</section>
+
+<footer>
+  <div class="footer-left">
+    <span class="footer-abc">ABC</span>
+    <span class="footer-name">Arisse Brand Company</span>
+  </div>
+  <span class="footer-right">Amsterdam 2026</span>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.fade').forEach(el => {
+    const parent = el.closest('.problem-grid, .stats, .services-header, .services-grid, .diff-grid, .personal-grid, .phases-header, .phases-grid, .hero-bottom');
+    if (parent) {
+      const siblings = Array.from(parent.querySelectorAll('.fade'));
+      const idx = siblings.indexOf(el);
+      el.style.transitionDelay = `${idx * 0.1}s`;
+    }
+    obs.observe(el);
+  });
+</script>
+</body>
+</html>
