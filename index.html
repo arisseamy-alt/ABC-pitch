@@ -86,8 +86,39 @@
     flex-direction: column;
     background: var(--cream);
     padding-top: 60px;
+    position: relative;
     overflow: hidden;
   }
+
+  .hero-glow1 {
+    position: absolute;
+    top: -100px; right: -120px;
+    width: 700px; height: 600px;
+    background: radial-gradient(ellipse at 55% 45%, rgba(184,37,30,0.54) 0%, rgba(184,37,30,0.24) 40%, rgba(184,37,30,0.07) 65%, transparent 80%);
+    border-radius: 55% 45% 60% 40%;
+    transform: rotate(-15deg);
+    pointer-events: none;
+  }
+
+  .hero-glow2 {
+    position: absolute;
+    bottom: 40px; left: -80px;
+    width: 560px; height: 460px;
+    background: radial-gradient(ellipse at 50% 60%, rgba(184,37,30,0.42) 0%, rgba(184,37,30,0.17) 40%, transparent 70%);
+    border-radius: 40% 60% 35% 65%;
+    transform: rotate(8deg);
+    pointer-events: none;
+  }
+
+  .hero-glow3 {
+    position: absolute;
+    top: 30%; left: 25%;
+    width: 400px; height: 300px;
+    background: radial-gradient(ellipse at 50% 50%, rgba(184,37,30,0.12) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow { display: none; }
 
   .hero-main {
     flex: 1;
@@ -96,9 +127,19 @@
     justify-content: flex-end;
     padding: 48px 52px 40px;
     position: relative;
+    z-index: 2;
   }
 
-  .hero-eyebrow { display: none; }
+  .hero-eyebrow {
+    font-family: var(--font-body);
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+    font-weight: 300;
+    display: block;
+  }
 
   .hero-abc {
     font-family: var(--font-display);
@@ -109,10 +150,17 @@
     color: var(--red);
     text-transform: uppercase;
     display: block;
+    position: relative;
+    z-index: 3;
+  }
+
+  .hero-headline-wrap {
+    position: relative;
+    z-index: 3;
   }
 
   .hero-tagline {
-    margin-top: 24px;
+    margin-top: 16px;
     display: flex;
     align-items: baseline;
     gap: 14px;
@@ -135,6 +183,8 @@
     border-top: 1px solid var(--cream-border);
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    position: relative;
+    z-index: 3;
   }
 
   .hero-cell {
@@ -797,8 +847,10 @@
 </nav>
 
 <section class="hero">
+  <div class="hero-glow1"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-glow3"></div>
   <div class="hero-main">
-    <p class="hero-eyebrow fade">Arisse Brand Company</p>
     <span class="hero-abc fade">ABC</span>
     <div class="hero-tagline fade">
       <span class="hero-tag">Building brands that are</span>
