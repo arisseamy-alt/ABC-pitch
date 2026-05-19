@@ -492,15 +492,17 @@
     text-transform: uppercase;
     color: var(--red);
     font-weight: 700;
+    display: block;
+    margin-bottom: 8px;
   }
 
   .diff-substatement-inline {
     font-family: var(--font-display);
-    font-size: 11px;
-    letter-spacing: 0.18em;
+    font-size: clamp(16px, 2vw, 24px);
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--text-muted);
-    font-weight: 400;
+    font-weight: 700;
   }
 
   .diff-grid {
@@ -1040,8 +1042,10 @@
     </div>
   </div>
   <div class="diff-header full-width-break fade">
-    <span class="diff-statement-inline">Our way of working</span>
-    <span class="diff-substatement-inline">Built around strategy, not execution alone</span>
+    <div>
+      <span class="diff-statement-inline">Our way of working</span><br>
+      <span class="diff-substatement-inline">Built around strategy, not execution alone</span>
+    </div>
   </div>
   <div class="diff-grid full-width-break fade">
     <div class="diff-cell yes">
