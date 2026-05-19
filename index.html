@@ -161,6 +161,7 @@
 
   .hero-tagline {
     margin-top: 16px;
+    margin-bottom: 40px;
     display: flex;
     align-items: baseline;
     gap: 14px;
@@ -210,6 +211,17 @@
     display: block;
   }
 
+  .full-width-break {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    padding-left: 52px;
+    padding-right: 52px;
+  }
+
   /* SHARED */
   .section { padding: 96px 52px; }
   .container { max-width: 1120px; margin: 0 auto; }
@@ -222,40 +234,51 @@
     color: var(--red);
     font-weight: 700;
     margin-bottom: 48px;
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
     align-items: center;
-    gap: 14px;
+    gap: 16px;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    margin-left: -50vw;
+    padding-left: 52px;
+    padding-right: 52px;
+    box-sizing: border-box;
+  }
+
+  .label::before {
+    content: attr(data-num);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--text-muted);
+    font-weight: 400;
+    font-family: var(--font-display);
   }
 
   .label::after {
     content: '';
-    width: 40px;
-    height: 1px;
+    height: 0.5px;
     background: var(--cream-border);
+    order: -1;
+    grid-column: 2;
   }
 
   .label-light { color: rgba(254,252,238,0.6); }
+  .label-light::before { color: rgba(254,252,238,0.3); }
   .label-light::after { background: rgba(254,252,238,0.2); }
 
   /* PROBLEM */
   .problem { background: var(--cream); }
 
-  .problem-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-    border: 1px solid var(--cream-border);
-    margin-bottom: 0;
-  }
-
-  .problem-left-cell {
-    padding: 56px 48px;
-    border-right: 1px solid var(--cream-border);
+  .problem-headline-wrap {
+    margin-bottom: 48px;
+    overflow: hidden;
   }
 
   .problem-headline {
     font-family: var(--font-display);
-    font-size: clamp(44px, 5.5vw, 72px);
+    font-size: clamp(52px, 7.5vw, 96px);
     font-weight: 900;
     line-height: 0.95;
     letter-spacing: -0.01em;
@@ -265,16 +288,43 @@
 
   .problem-headline .blk { color: var(--black); }
 
+  .reveal-line {
+    overflow: hidden;
+    display: block;
+  }
+
+  .reveal-line-inner {
+    display: block;
+    transform: translateY(100%);
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reveal-line-inner.revealed {
+    transform: translateY(0);
+  }
+
+  .problem-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 0;
+  }
+
+  .problem-left-cell { }
+
   .problem-right-cell {
-    padding: 56px 48px;
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
 
+  .problem-body-wrap {
+    margin-bottom: 0;
+  }
+
   .problem-body {
     font-family: var(--font-body);
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 300;
     line-height: 1.85;
     color: var(--text-body);
@@ -282,13 +332,20 @@
 
   .problem-body p { margin-bottom: 20px; }
   .problem-body p:last-child { margin-bottom: 0; }
-  .problem-body strong { font-weight: 500; color: var(--black); }
+  .problem-body strong {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 1.15em;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: var(--black);
+  }
 
   .stats {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     border: 1px solid var(--cream-border);
-    border-top: none;
+    margin-top: 48px;
   }
 
   .stat {
@@ -301,10 +358,10 @@
 
   .stat-num {
     font-family: var(--font-display);
-    font-size: 72px;
+    font-size: clamp(72px, 9vw, 112px);
     font-weight: 900;
     color: var(--red);
-    line-height: 0.9;
+    line-height: 0.88;
     margin-bottom: 12px;
     letter-spacing: -0.02em;
   }
@@ -319,7 +376,7 @@
 
   .stat-quote {
     font-family: var(--font-display);
-    font-size: 32px;
+    font-size: clamp(28px, 3.5vw, 40px);
     font-weight: 900;
     color: var(--red);
     line-height: 1.1;
@@ -404,65 +461,89 @@
   /* DIFFERENCE */
   .difference { background: var(--cream); padding: 96px 52px; }
 
-  .diff-statement {
-    font-family: var(--font-display);
-    font-size: clamp(36px, 5vw, 64px);
-    font-weight: 900;
-    line-height: 0.95;
-    letter-spacing: -0.01em;
-    text-transform: uppercase;
-    color: var(--red);
-    margin-bottom: 16px;
-    max-width: 700px;
+  .diff-break {
+    margin-bottom: 52px;
   }
 
-  .diff-substatement {
+  .diff-break-line {
     font-family: var(--font-display);
-    font-size: clamp(18px, 2.5vw, 28px);
-    font-weight: 400;
+    font-size: clamp(52px, 8vw, 104px);
+    font-weight: 900;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
+    line-height: 0.92;
+    letter-spacing: -0.01em;
+    color: var(--black);
+    display: block;
+  }
+
+  .diff-break-line.red { color: var(--red); }
+
+  .diff-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 28px 52px 20px;
+  }
+
+  .diff-statement-inline {
+    font-family: var(--font-display);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--red);
+    font-weight: 700;
+  }
+
+  .diff-substatement-inline {
+    font-family: var(--font-display);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
     color: var(--text-muted);
-    margin-bottom: 52px;
-    max-width: 500px;
+    font-weight: 400;
   }
 
   .diff-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    background: var(--cream-border);
-    border: 1px solid var(--cream-border);
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 0.5px solid var(--cream-border);
   }
 
-  .diff-col { padding: 40px 40px; background: var(--cream); }
+  .diff-cell {
+    padding: 28px 32px;
+    border-right: 0.5px solid var(--cream-border);
+    border-bottom: 0.5px solid var(--cream-border);
+  }
 
-  .diff-col-label {
+  .diff-cell:nth-child(4n) { border-right: none; }
+  .diff-cell:nth-child(n+5) { border-bottom: none; }
+
+  .diff-cell.yes { background: var(--cream); }
+  .diff-cell.not { background: var(--cream-dark); }
+
+  .diff-cell-label {
     font-family: var(--font-display);
-    font-size: 11px;
-    letter-spacing: 0.22em;
+    font-size: 9px;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
-    margin-bottom: 24px;
     font-weight: 700;
+    margin-bottom: 10px;
+    display: block;
   }
 
-  .diff-col.not .diff-col-label { color: var(--text-muted); }
-  .diff-col.yes .diff-col-label { color: var(--red); }
+  .diff-cell.yes .diff-cell-label { color: var(--red); }
+  .diff-cell.not .diff-cell-label { color: var(--text-muted); }
 
-  .diff-item {
+  .diff-cell-text {
     font-family: var(--font-display);
-    font-size: 18px;
-    font-weight: 700;
+    font-weight: 900;
     text-transform: uppercase;
-    letter-spacing: 0.02em;
-    padding: 12px 0;
-    border-bottom: 1px solid var(--cream-dark);
-    line-height: 1.2;
+    line-height: 1.05;
+    font-size: clamp(18px, 2vw, 24px);
   }
 
-  .diff-item:last-child { border-bottom: none; }
-  .diff-col.not .diff-item { color: var(--text-muted); text-decoration: line-through; text-decoration-color: var(--cream-border); }
-  .diff-col.yes .diff-item { color: var(--black); }
+  .diff-cell.yes .diff-cell-text { color: var(--black); }
+  .diff-cell.not .diff-cell-text { color: var(--cream-border); text-decoration: line-through; text-decoration-color: var(--cream-dark); font-weight: 700; font-size: clamp(16px, 1.8vw, 20px); }
 
   /* PERSONAL */
   .personal { background: var(--cream-dark); padding: 96px 52px; }
@@ -570,22 +651,15 @@
   /* PHASES */
   .phases { background: var(--cream); padding: 96px 52px; }
 
-  .phases-header {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 72px;
-    align-items: end;
-    margin-bottom: 48px;
-  }
-
   .phases-headline {
     font-family: var(--font-display);
-    font-size: clamp(44px, 5.5vw, 72px);
+    font-size: clamp(52px, 7.5vw, 96px);
     font-weight: 900;
     line-height: 0.95;
     text-transform: uppercase;
     letter-spacing: -0.01em;
     color: var(--red);
+    margin-bottom: 24px;
   }
 
   .phases-sub {
@@ -594,18 +668,27 @@
     font-weight: 300;
     color: var(--text-muted);
     line-height: 1.75;
+    margin-bottom: 48px;
+  }
+
+  .phases-grid.full-width-break {
+    padding-left: 0;
+    padding-right: 0;
   }
 
   .phases-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     border: 1px solid var(--cream-border);
+    min-height: 480px;
   }
 
   .phase {
-    padding: 40px 36px;
+    padding: 52px 44px;
     border-right: 1px solid var(--cream-border);
     background: var(--cream);
+    display: flex;
+    flex-direction: column;
   }
 
   .phase:last-child { border-right: none; }
@@ -621,7 +704,7 @@
     letter-spacing: 0.2em;
     text-transform: uppercase;
     font-weight: 700;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
   }
 
   .phase-active .phase-n { color: rgba(254,252,238,0.6); }
@@ -629,9 +712,9 @@
 
   .phase-period {
     font-family: var(--font-body);
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 300;
-    margin-bottom: 20px;
+    margin-bottom: 32px;
   }
 
   .phase-active .phase-period { color: rgba(254,252,238,0.5); }
@@ -639,33 +722,35 @@
 
   .phase-title {
     font-family: var(--font-display);
-    font-size: 24px;
+    font-size: clamp(28px, 3vw, 38px);
     font-weight: 900;
     text-transform: uppercase;
     letter-spacing: 0.01em;
-    margin-bottom: 12px;
+    margin-bottom: 20px;
     line-height: 1.0;
+    flex: 1;
   }
 
   .phase-active .phase-title { color: var(--cream); }
   .phase:not(.phase-active) .phase-title { color: var(--red); }
 
   .phase-dot {
-    width: 6px;
-    height: 6px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
     background: var(--cream);
-    margin-bottom: 20px;
+    margin-bottom: 32px;
   }
 
   .phase-desc {
     font-family: var(--font-body);
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 300;
-    line-height: 1.75;
+    line-height: 1.8;
+    margin-top: auto;
   }
 
-  .phase-active .phase-desc { color: rgba(254,252,238,0.65); }
+  .phase-active .phase-desc { color: rgba(254,252,238,0.7); }
   .phase:not(.phase-active) .phase-desc { color: var(--text-muted); }
 
   /* CLOSE */
@@ -825,7 +910,7 @@
     .problem-grid, .services-header, .personal-grid, .phases-header { grid-template-columns: 1fr; }
     .problem-left-cell { border-right: none; border-bottom: 1px solid var(--cream-border); }
     .personal-left { border-right: none; border-bottom: 1px solid rgba(254,252,238,0.15); }
-    .stats, .services-grid, .diff-grid { grid-template-columns: 1fr; }
+    .stats, .services-grid, .diff-grid { grid-template-columns: 1fr 1fr; }
     .stat { border-right: none; border-bottom: 1px solid var(--cream-border); }
     .phases-grid { grid-template-columns: 1fr; }
     .phase { border-right: 1px solid var(--cream-border); border-bottom: none; }
@@ -875,19 +960,16 @@
 
 <section class="section problem">
   <div class="container">
-    <p class="label fade">The world we work in</p>
-    <div class="problem-grid fade">
-      <div class="problem-left-cell">
-        <p class="problem-headline">
-          <span class="blk">Most brands have a story,<br>but</span> only<br>
-          few are remembered
-        </p>
-      </div>
-      <div class="problem-right-cell">
-        <div class="problem-body">
-          <p>In a world that is becoming more digital by the day, the brands that last are the ones that connect with real life — with intention, with strategy, and with experiences that are part of something bigger than a single moment.</p>
-          <p><strong>Offline is no longer optional.</strong> It is where trust is built, where loyalty is earned, and where brands become something people actually feel.</p>
-        </div>
+    <p class="label fade" data-num="01">The world we work in</p>
+    <div class="problem-headline-wrap full-width-break">
+      <p class="problem-headline">
+        <span class="reveal-line"><span class="reveal-line-inner"><span class="blk">Most brands have a story,</span></span></span>
+        <span class="reveal-line"><span class="reveal-line-inner"><span class="blk">but only</span> few are remembered</span></span>
+      </p>
+    </div>
+    <div class="problem-body-wrap full-width-break fade">
+      <div class="problem-body">
+        <p>In a world that is becoming more digital by the day, the brands that last are the ones that connect with real life, with intention, with strategy, and with experiences that are part of something bigger than a single moment. <strong>Offline is no longer optional.</strong> It is where trust is built, where loyalty is earned, and where brands become something people actually feel.</p>
       </div>
     </div>
     <div class="stats fade">
@@ -908,7 +990,7 @@
 
 <section class="services">
   <div class="container">
-    <p class="label label-light fade">What ABC does</p>
+    <p class="label label-light fade" data-num="02">What ABC does</p>
     <div class="services-header">
       <h2 class="services-headline fade">
         Strategy first,<br>moments as output
@@ -952,33 +1034,54 @@
 
 <section class="difference">
   <div class="container">
-    <p class="label fade">What makes ABC different</p>
-    <h2 class="diff-statement fade">Our way of working</h2>
-    <p class="diff-substatement fade">Built around strategy, not execution alone</p>
-    <div class="diff-grid fade">
-      <div class="diff-col not">
-        <p class="diff-col-label">Not this</p>
-        <p class="diff-item">Event bureau without strategy</p>
-        <p class="diff-item">Consultancy that never executes</p>
-        <p class="diff-item">Generic activations</p>
-        <p class="diff-item">Catering with a nice logo</p>
-        <p class="diff-item">Big agency overhead</p>
-      </div>
-      <div class="diff-col yes">
-        <p class="diff-col-label">This</p>
-        <p class="diff-item">Strategy first, always</p>
-        <p class="diff-item">Concept and production under one roof</p>
-        <p class="diff-item">High standard, personal involvement</p>
-        <p class="diff-item">Hospitality as a brand tool</p>
-        <p class="diff-item">Business impact, full stop</p>
-      </div>
+    <p class="label fade" data-num="03">What makes ABC different</p>
+    <div class="diff-break full-width-break fade">
+      <span class="diff-break-line">Most agencies either think <span style="color:var(--red);">or do</span></span>
+    </div>
+  </div>
+  <div class="diff-header full-width-break fade">
+    <span class="diff-statement-inline">Our way of working</span>
+    <span class="diff-substatement-inline">Built around strategy, not execution alone</span>
+  </div>
+  <div class="diff-grid full-width-break fade">
+    <div class="diff-cell yes">
+      <span class="diff-cell-label">This</span>
+      <span class="diff-cell-text">Strategy first, always</span>
+    </div>
+    <div class="diff-cell not">
+      <span class="diff-cell-label">Not this</span>
+      <span class="diff-cell-text">Event bureau without strategy</span>
+    </div>
+    <div class="diff-cell yes">
+      <span class="diff-cell-label">This</span>
+      <span class="diff-cell-text">Concept and production under one roof</span>
+    </div>
+    <div class="diff-cell not">
+      <span class="diff-cell-label">Not this</span>
+      <span class="diff-cell-text">Consultancy that never executes</span>
+    </div>
+    <div class="diff-cell not">
+      <span class="diff-cell-label">Not this</span>
+      <span class="diff-cell-text">Generic activations</span>
+    </div>
+    <div class="diff-cell yes">
+      <span class="diff-cell-label">This</span>
+      <span class="diff-cell-text">High standard, personal involvement</span>
+    </div>
+    <div class="diff-cell not">
+      <span class="diff-cell-label">Not this</span>
+      <span class="diff-cell-text">Big agency overhead</span>
+    </div>
+    <div class="diff-cell yes">
+      <span class="diff-cell-label">This</span>
+      <span class="diff-cell-text">Business impact, full stop</span>
     </div>
   </div>
 </section>
 
 <section class="personal">
   <div class="container">
-    <p class="label fade">The person behind it</p>
+    <p class="label fade" data-num="04">The person behind it</p>
     <div class="personal-grid fade">
       <div class="personal-left">
         <div class="personal-name-block">
@@ -1013,12 +1116,10 @@
 
 <section class="phases">
   <div class="container">
-    <p class="label fade">Where we are going</p>
-    <div class="phases-header">
-      <h2 class="phases-headline fade">Building with intention,<br>one phase at a time</h2>
-      <p class="phases-sub fade">ABC is being built deliberately, starting with the work that proves the concept, growing into the company it is meant to become.</p>
-    </div>
-    <div class="phases-grid fade">
+    <p class="label fade" data-num="05">Where we are going</p>
+    <h2 class="phases-headline full-width-break fade">Building with intention,<br>one phase at a time</h2>
+    <p class="phases-sub full-width-break fade">ABC is being built deliberately, starting with the work that proves the concept, growing into the company it is meant to become.</p>
+    <div class="phases-grid full-width-break fade">
       <div class="phase phase-active">
         <div class="phase-dot"></div>
         <p class="phase-n">Phase 01</p>
@@ -1078,6 +1179,21 @@
     }
     obs.observe(el);
   });
+
+  const lineObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const lines = entry.target.querySelectorAll('.reveal-line-inner');
+        lines.forEach((line, i) => {
+          setTimeout(() => line.classList.add('revealed'), i * 160);
+        });
+        lineObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  const headlineWrap = document.querySelector('.problem-headline-wrap');
+  if (headlineWrap) lineObs.observe(headlineWrap);
 </script>
 </body>
 </html>
