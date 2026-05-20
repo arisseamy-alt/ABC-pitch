@@ -403,14 +403,27 @@
     letter-spacing: -0.01em;
     text-transform: uppercase;
     color: var(--cream);
+    margin-bottom: 20px;
+  }
+
+  .services-subline {
+    font-family: var(--font-display);
+    font-size: clamp(20px, 2.5vw, 30px);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: rgba(254,252,238,0.75);
+    line-height: 1.15;
+    margin-bottom: 16px;
   }
 
   .services-desc {
     font-family: var(--font-body);
     font-size: 16px;
     font-weight: 300;
-    color: rgba(254,252,238,0.65);
+    color: rgba(254,252,238,0.55);
     line-height: 1.8;
+    margin-bottom: 52px;
   }
 
   .services-grid {
@@ -461,9 +474,7 @@
   /* DIFFERENCE */
   .difference { background: var(--cream); padding: 96px 52px; }
 
-  .diff-break {
-    margin-bottom: 52px;
-  }
+  .diff-break { margin-bottom: 52px; }
 
   .diff-break-line {
     font-family: var(--font-display);
@@ -475,8 +486,6 @@
     color: var(--black);
     display: block;
   }
-
-  .diff-break-line.red { color: var(--red); }
 
   .diff-header {
     display: flex;
@@ -546,6 +555,48 @@
 
   .diff-cell.yes .diff-cell-text { color: var(--black); }
   .diff-cell.not .diff-cell-text { color: var(--cream-border); text-decoration: line-through; text-decoration-color: var(--cream-dark); font-weight: 700; font-size: clamp(16px, 1.8vw, 20px); }
+
+  /* HOW */
+  .how { background: var(--red); padding: 96px 52px; }
+
+  .how-headline {
+    font-family: var(--font-display);
+    font-size: clamp(52px, 8vw, 104px);
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 0.92;
+    letter-spacing: -0.01em;
+    color: var(--cream);
+    margin-bottom: 24px;
+  }
+
+  .how-intro {
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(254,252,238,0.6);
+    line-height: 1.75;
+    margin-bottom: 48px;
+    max-width: 560px;
+  }
+
+  .how .services-grid {
+    background: rgba(254,252,238,0.15);
+  }
+
+  .how .service {
+    background: rgba(254,252,238,0.08);
+    border-top: 2px solid transparent;
+  }
+
+  .how .service:hover {
+    background: rgba(254,252,238,0.13);
+    border-top-color: rgba(254,252,238,0.4);
+  }
+
+  .how .service-n { color: rgba(254,252,238,0.4); }
+  .how .service-name { color: var(--cream); }
+  .how .service-text { color: rgba(254,252,238,0.55); }
 
   /* PERSONAL */
   .personal { background: var(--cream-dark); padding: 96px 52px; }
@@ -993,44 +1044,11 @@
 <section class="services">
   <div class="container">
     <p class="label label-light fade" data-num="02">What ABC does</p>
-    <div class="services-header">
-      <h2 class="services-headline fade">
+    <h2 class="services-headline full-width-break fade">
         Strategy first,<br>moments as output
       </h2>
-      <p class="services-desc fade">ABC works across the full brand journey — from defining who you are to making sure people feel it. Six areas of work, one connecting thread: brands built to last.</p>
-    </div>
-    <div class="services-grid fade">
-      <div class="service">
-        <p class="service-n">01</p>
-        <h3 class="service-name">Brand Positioning</h3>
-        <p class="service-text">Launch, relaunch or reposition — grounded in who you actually are and where you want to go.</p>
-      </div>
-      <div class="service">
-        <p class="service-n">02</p>
-        <h3 class="service-name">Brand Strategy</h3>
-        <p class="service-text">Vision translated into a clear plan across paid, earned, shared and owned channels.</p>
-      </div>
-      <div class="service">
-        <p class="service-n">03</p>
-        <h3 class="service-name">Brand Experiences</h3>
-        <p class="service-text">Physical moments — activations, pop-ups, sampling — conceived and executed end to end.</p>
-      </div>
-      <div class="service">
-        <p class="service-n">04</p>
-        <h3 class="service-name">Brand Partnerships</h3>
-        <p class="service-text">Collaborations that make sense for the brand, curated and delivered with intention.</p>
-      </div>
-      <div class="service">
-        <p class="service-n">05</p>
-        <h3 class="service-name">Brand Productions</h3>
-        <p class="service-text">Creative and event production under one roof, with strategic direction throughout.</p>
-      </div>
-      <div class="service">
-        <p class="service-n">06</p>
-        <h3 class="service-name">Brand Hospitality</h3>
-        <p class="service-text">Food and hospitality as a brand tool — not an afterthought. The detail that makes it memorable.</p>
-      </div>
-    </div>
+      <p class="services-subline full-width-break fade">Brand strategy and physical experiences that drive real business impact</p>
+      <p class="services-desc full-width-break fade">ABC works across the full brand journey — from defining who you are to making sure people feel it.</p>
   </div>
 </section>
 
@@ -1083,9 +1101,49 @@
   </div>
 </section>
 
+<section class="how">
+  <div class="container">
+    <p class="label label-light fade" data-num="04">The how</p>
+    <h2 class="how-headline full-width-break fade">The work</h2>
+    <p class="how-intro fade">Six areas of work, one connecting thread: brands built to last.</p>
+    <div class="services-grid fade">
+      <div class="service how-service">
+        <p class="service-n">01</p>
+        <h3 class="service-name">Brand Positioning</h3>
+        <p class="service-text">Launch, relaunch or reposition — grounded in who you actually are and where you want to go.</p>
+      </div>
+      <div class="service how-service">
+        <p class="service-n">02</p>
+        <h3 class="service-name">Brand Strategy</h3>
+        <p class="service-text">Vision translated into a clear plan across paid, earned, shared and owned channels.</p>
+      </div>
+      <div class="service how-service">
+        <p class="service-n">03</p>
+        <h3 class="service-name">Brand Experiences</h3>
+        <p class="service-text">Physical moments — activations, pop-ups, sampling — conceived and executed end to end.</p>
+      </div>
+      <div class="service how-service">
+        <p class="service-n">04</p>
+        <h3 class="service-name">Brand Partnerships</h3>
+        <p class="service-text">Collaborations that make sense for the brand, curated and delivered with intention.</p>
+      </div>
+      <div class="service how-service">
+        <p class="service-n">05</p>
+        <h3 class="service-name">Brand Productions</h3>
+        <p class="service-text">Creative and event production under one roof, with strategic direction throughout.</p>
+      </div>
+      <div class="service how-service">
+        <p class="service-n">06</p>
+        <h3 class="service-name">Brand Hospitality</h3>
+        <p class="service-text">Food and hospitality as a brand tool — not an afterthought. The detail that makes it memorable.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="personal">
   <div class="container">
-    <p class="label fade" data-num="04">The person behind it</p>
+    <p class="label fade" data-num="05">The person behind it</p>
     <div class="personal-grid fade">
       <div class="personal-left">
         <div class="personal-name-block">
@@ -1120,7 +1178,7 @@
 
 <section class="phases">
   <div class="container">
-    <p class="label fade" data-num="05">Where we are going</p>
+    <p class="label fade" data-num="06">Where we are going</p>
     <h2 class="phases-headline full-width-break fade">Building with intention,<br>one phase at a time</h2>
     <p class="phases-sub full-width-break fade">ABC is being built deliberately, starting with the work that proves the concept, growing into the company it is meant to become.</p>
     <div class="phases-grid full-width-break fade">
